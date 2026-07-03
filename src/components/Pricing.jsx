@@ -30,7 +30,7 @@ const Pricing = () => {
     <section className="py-24 px-4">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-outline">Choose Your <span className="text-[#00d2ff]">Plan</span></h2>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">Choose Your <span className="text-[#00d2ff]">Plan</span></h2>
           <p className="text-slate-400 max-w-2xl mx-auto">Flexible hosting solutions designed to grow with your business.</p>
         </div>
 

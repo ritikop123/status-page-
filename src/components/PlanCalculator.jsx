@@ -34,7 +34,7 @@ const PlanCalculator = () => {
           </motion.div>
 
           {/* Heading */}
-          <h2 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight text-outline">
+          <h2 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
             Calculate Your <span className="text-gradient">Minecraft Server</span> Needs
           </h2>
 

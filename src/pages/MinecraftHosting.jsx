@@ -86,10 +86,10 @@ const MinecraftHosting = () => {
           animate={{ opacity: 1, y: 0 }}
           className="relative z-10 text-center px-4"
         >
-          <h1 className="text-5xl md:text-8xl font-black tracking-tight mb-4 text-white drop-shadow-2xl">
+          <h1 className="text-5xl md:text-8xl font-black tracking-tight mb-4 text-white">
             Minecraft Server Hosting
           </h1>
-          <p className="text-xl md:text-2xl text-slate-300 font-medium max-w-3xl mx-auto mb-8 drop-shadow-lg">
+          <p className="text-xl md:text-2xl text-slate-300 font-medium max-w-3xl mx-auto mb-8">
             Premium Minecraft hosting with zero lag and instant setup
           </p>
           

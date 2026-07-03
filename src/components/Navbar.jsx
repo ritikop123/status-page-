@@ -74,7 +74,7 @@ const Navbar = () => {
             alt="Sagarmatha Hosting Logo"
             className="h-10 w-auto object-contain transition-transform group-hover:scale-105"
           />
-          <span className="text-xl font-bold tracking-tight text-white hidden sm:block text-outline">
+          <span className="text-xl font-bold tracking-tight text-white hidden sm:block">
             Sagarmatha
           </span>
         </Link>

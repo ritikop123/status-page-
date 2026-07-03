@@ -27,7 +27,7 @@ const Hero = () => {
             Next-Gen Cloud Hosting
           </span>
           <h1 className="max-w-4xl mx-auto mb-6 text-4xl font-extrabold tracking-tight md:text-7xl leading-tight">
-            <span className="text-outline text-white">Infrastructure to Make Your</span> <span className="text-gradient">Dreams Live</span>
+            <span className="text-white">Infrastructure to Make Your</span> <span className="text-gradient">Dreams Live</span>
           </h1>
           <p className="max-w-3xl mx-auto mb-10 text-base md:text-xl text-slate-300 px-2">
             Providing premium, zero-lag infrastructure across Nepal, India, and beyond.
@@ -68,7 +68,7 @@ const Hero = () => {
                 <div className="inline-flex p-3 mb-4 rounded-2xl bg-cyan-600/10 text-[#00d2ff]">
                   <feature.icon className="w-6 h-6" />
                 </div>
-                <h3 className="mb-2 text-xl font-bold text-white text-outline">{feature.title}</h3>
+                <h3 className="mb-2 text-xl font-bold text-white">{feature.title}</h3>
                 <p className="text-slate-400">{feature.desc}</p>
               </div>
             </div>
@@ -92,7 +92,7 @@ const Hero = () => {
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 block" 
               />
             </div>
-            <h3 className="text-3xl font-black text-center text-white tracking-wider mb-2 text-shadow-sm group-hover:text-indigo-400 transition-colors">MINECRAFT</h3>
+            <h3 className="text-3xl font-black text-center text-white tracking-wider mb-2 group-hover:text-indigo-400 transition-colors">MINECRAFT</h3>
           </Link>
 
           {/* VPS Hosting Card */}
@@ -105,7 +105,7 @@ const Hero = () => {
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 block" 
               />
             </div>
-            <h3 className="text-3xl font-black text-center text-white tracking-wider mb-2 text-shadow-sm group-hover:text-cyan-400 transition-colors">VPS HOSTING</h3>
+            <h3 className="text-3xl font-black text-center text-white tracking-wider mb-2 group-hover:text-cyan-400 transition-colors">VPS HOSTING</h3>
           </Link>
         </motion.div>
       </div>

@@ -15,7 +15,7 @@ const Footer = () => {
                 alt="Sagarmatha Hosting"
                 className="h-10 w-auto object-contain"
               />
-              <span className="text-xl font-bold tracking-tight text-white text-outline">
+              <span className="text-xl font-bold tracking-tight text-white">
                 Sagarmatha
               </span>
             </Link>

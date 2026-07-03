@@ -32,14 +32,7 @@ body {
     @apply px-6 py-2 bg-[#00d2ff] hover:bg-[#00b5dc] text-black font-bold rounded-full transition-all duration-300 shadow-lg shadow-cyan-900/20 active:scale-95;
   }
 
-  .text-outline {
-    filter: 
-      drop-shadow(-1.5px -1.5px 0 #000)
-      drop-shadow(1.5px -1.5px 0 #000)
-      drop-shadow(-1.5px 1.5px 0 #000)
-      drop-shadow(1.5px 1.5px 0 #000)
-      drop-shadow(3px 3px 6px rgba(0,0,0,0.8));
-  }
+
 }
 
 /* Rotating Single-Line Border Beam Effect */
@@ -115,9 +108,7 @@ html.light-mode .glass-pill {
   border-color: rgba(148, 163, 184, 0.3) !important;
 }
 
-html.light-mode .text-outline {
-  filter: none !important;
-}
+
 
 /* Navbar */
 html.light-mode nav {
