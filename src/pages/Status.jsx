@@ -152,11 +152,11 @@ const useStatusData = () => {
           latency: r.latency_ms
         }));
 
-        // Pad history with default up entries if there are fewer than 90 logs in the DB
+        // Pad history with "no_data" entries if there are fewer than 90 logs in the DB
         const paddedHistory = [
           ...Array.from({ length: Math.max(0, 90 - history.length) }, () => ({
-            status: 'up',
-            latency: Math.floor(Math.random() * 5) + 20
+            status: 'no_data',
+            latency: 0
           })),
           ...history
         ];
@@ -210,7 +210,7 @@ const statusMeta = {
   outage:       { label: 'Outage',       dot: 'bg-red-400',    badge: 'bg-red-500/10 border-red-500/25 text-red-400',          icon: XCircle,         glow: 'shadow-[0_0_20px_rgba(239,68,68,0.2)]'  },
 };
 
-const barColor = s => s === 'down' ? 'bg-red-500/80' : 'bg-green-400/70 hover:bg-green-400';
+const barColor = s => s === 'no_data' ? 'bg-slate-800' : s === 'down' ? 'bg-red-500/80' : 'bg-green-400/70 hover:bg-green-400';
 
 /* ─── UptimeBar component ───────────────────── */
 const UptimeBar = ({ history }) => {
@@ -220,26 +220,34 @@ const UptimeBar = ({ history }) => {
     return acc;
   }, []);
 
-  const chunkStatus = chunk => chunk.some(d => d.status === 'down') ? 'down' : 'up';
+  const chunkStatus = chunk => {
+    if (chunk.some(d => d.status === 'down')) return 'down';
+    if (chunk.every(d => d.status === 'no_data')) return 'no_data';
+    return 'up';
+  };
 
   return (
     <div className="space-y-2.5">
       <div className="flex justify-between text-[9px] font-black text-slate-600 uppercase tracking-widest">
-        <span>90 days ago</span>
-        <span>Uptime History (90d)</span>
+        <span>7.5 hours ago</span>
+        <span>Uptime History (7.5h)</span>
         <span>Today</span>
       </div>
       <div className="flex gap-px items-end h-8">
         {chunks.map((chunk, idx) => {
           const cs = chunkStatus(chunk);
-          const avgLatency = Math.round(chunk.reduce((s, d) => s + d.latency, 0) / chunk.length);
+          const validChunks = chunk.filter(d => d.status !== 'no_data');
+          const avgLatency = validChunks.length > 0 
+            ? Math.round(validChunks.reduce((s, d) => s + d.latency, 0) / validChunks.length)
+            : 0;
+
           return (
             <div key={idx} className="relative group flex-1">
-              <div className={`h-8 rounded-[2px] transition-all duration-200 ${barColor(cs)} hover:scale-y-110 cursor-default`} />
+              <div className={`h-8 rounded-[2px] transition-all duration-200 ${barColor(cs)} ${cs !== 'no_data' ? 'hover:scale-y-110' : ''} cursor-default`} />
               <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-28 bg-[#020617] border border-slate-800 rounded-xl p-2 text-center pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity z-40 shadow-2xl">
-                <p className="text-[9px] font-black text-slate-500 uppercase mb-0.5">~{3 * (chunks.length - idx)}d ago</p>
+                <p className="text-[9px] font-black text-slate-500 uppercase mb-0.5">~{15 * (chunks.length - idx)}m ago</p>
                 <p className="text-[10px] font-black text-white capitalize">
-                  {cs === 'down' ? '🔴 Outage' : '🟢 Uptime'}
+                  {cs === 'down' ? '🔴 Outage' : cs === 'no_data' ? '⚪ No Data' : '🟢 Uptime'}
                 </p>
                 {cs === 'up' && <p className="text-[9px] text-cyan-400 font-bold mt-0.5">{avgLatency}ms avg</p>}
               </div>
@@ -255,9 +263,59 @@ const UptimeBar = ({ history }) => {
   );
 };
 
+/* ─── LatencyChart component ────────────────── */
+const LatencyChart = ({ history }) => {
+  // history is array of 90 items (oldest first)
+  const maxLatency = Math.max(20, ...history.map(d => d.status === 'down' || d.status === 'no_data' ? 0 : d.latency));
+
+  return (
+    <div className="space-y-2.5">
+      <div className="flex justify-between text-[9px] font-black text-slate-600 uppercase tracking-widest">
+        <span>7.5 hours ago</span>
+        <span>Latency Analytics (7.5h)</span>
+        <span>Today</span>
+      </div>
+      <div className="flex gap-px items-end h-24">
+        {history.map((d, idx) => {
+          const isNoData = d.status === 'no_data';
+          const isDown = d.status === 'down';
+          // Minimum height 2px so bar is always visible unless down
+          const heightPct = isNoData || isDown ? 0 : Math.max(2, (d.latency / maxLatency) * 100);
+          const minsAgo = 5 * (history.length - idx);
+
+          return (
+            <div key={idx} className="relative group flex-1 flex flex-col justify-end h-full">
+              <div 
+                className={`w-full rounded-[2px] transition-all duration-200 cursor-default ${
+                  isNoData ? 'bg-slate-800 h-full opacity-20' :
+                  isDown ? 'bg-red-500/80 h-full opacity-20' :
+                  'bg-cyan-500/70 hover:bg-cyan-400 hover:scale-x-110'
+                }`}
+                style={{ height: isNoData || isDown ? '100%' : `${heightPct}%` }}
+              />
+              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-28 bg-[#020617] border border-slate-800 rounded-xl p-2 text-center pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity z-40 shadow-2xl">
+                <p className="text-[9px] font-black text-slate-500 uppercase mb-0.5">~{minsAgo}m ago</p>
+                <p className="text-[10px] font-black text-white capitalize">
+                  {isDown ? '🔴 Outage' : isNoData ? '⚪ No Data' : '🟢 Online'}
+                </p>
+                {!isDown && !isNoData && <p className="text-[11px] text-cyan-400 font-bold mt-0.5">{d.latency}ms</p>}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <div className="flex justify-between items-center text-[9px] font-bold text-slate-600 uppercase tracking-widest">
+        <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-sm bg-cyan-500/70" />Latency (ms)</span>
+        <span>Max: {maxLatency}ms</span>
+      </div>
+    </div>
+  );
+};
+
 /* ─── NodeCard ───────────────────────────────── */
 const NodeCard = ({ node, index }) => {
   const [open, setOpen] = useState(false);
+  const [view, setView] = useState('uptime');
   const meta = statusMeta[node.status] || statusMeta.operational;
   const StatusIcon = meta.icon;
 
@@ -291,7 +349,7 @@ const NodeCard = ({ node, index }) => {
         {/* Stats + Badge */}
         <div className="flex items-center gap-4 flex-shrink-0">
           <div className="text-right hidden sm:block">
-            <p className="text-[10px] text-slate-600 font-black uppercase tracking-widest">90d Uptime</p>
+            <p className="text-[10px] text-slate-600 font-black uppercase tracking-widest">7.5h Uptime</p>
             <p className="text-sm font-black text-white">{node.uptime}</p>
           </div>
           <div className={`flex items-center gap-1.5 px-3.5 py-1.5 border rounded-full text-[10px] font-black uppercase tracking-widest ${meta.badge}`}>
@@ -312,8 +370,29 @@ const NodeCard = ({ node, index }) => {
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <div className="px-6 md:px-8 pb-8 border-t border-slate-800/60 pt-6">
-              <UptimeBar history={node.history} />
+            <div className="px-6 md:px-8 pb-8 border-t border-slate-800/60 pt-4">
+              <div className="flex justify-center mb-6">
+                <div className="bg-slate-900/80 p-1 rounded-xl border border-slate-800/80 inline-flex">
+                  <button 
+                    onClick={() => setView('uptime')}
+                    className={`px-4 py-1.5 text-[10px] font-black uppercase tracking-widest rounded-lg transition-colors ${view === 'uptime' ? 'bg-slate-800 text-white' : 'text-slate-500 hover:text-slate-300'}`}
+                  >
+                    Uptime
+                  </button>
+                  <button 
+                    onClick={() => setView('analytics')}
+                    className={`px-4 py-1.5 text-[10px] font-black uppercase tracking-widest rounded-lg transition-colors ${view === 'analytics' ? 'bg-slate-800 text-white' : 'text-slate-500 hover:text-slate-300'}`}
+                  >
+                    Analytics
+                  </button>
+                </div>
+              </div>
+              
+              {view === 'uptime' ? (
+                <UptimeBar history={node.history} />
+              ) : (
+                <LatencyChart history={node.history} />
+              )}
             </div>
           </motion.div>
         )}
