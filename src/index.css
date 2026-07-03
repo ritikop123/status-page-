@@ -1,0 +1,226 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #020617; /* Slate-950 */
+  color: #f8fafc;
+  overflow-x: hidden;
+}
+
+/* Custom Utilities for Glassmorphism */
+@layer components {
+  .glass {
+    @apply bg-slate-900/40 backdrop-blur-md border border-slate-700/50 shadow-xl;
+  }
+  
+  .glass-pill {
+    @apply glass rounded-full px-6 py-3;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#00d2ff] to-[#00b5dc];
+  }
+
+  .btn-primary {
+    @apply px-6 py-2 bg-[#00d2ff] hover:bg-[#00b5dc] text-black font-bold rounded-full transition-all duration-300 shadow-lg shadow-cyan-900/20 active:scale-95;
+  }
+
+  .text-outline {
+    filter: 
+      drop-shadow(-1.5px -1.5px 0 #000)
+      drop-shadow(1.5px -1.5px 0 #000)
+      drop-shadow(-1.5px 1.5px 0 #000)
+      drop-shadow(1.5px 1.5px 0 #000)
+      drop-shadow(3px 3px 6px rgba(0,0,0,0.8));
+  }
+}
+
+/* Rotating Single-Line Border Beam Effect */
+@keyframes border-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.glow-border {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  /* Create the 1.5px border stroke by masking the center */
+  border: 1.5px solid transparent;
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+}
+
+.glow-border::before {
+  content: "";
+  position: absolute;
+  aspect-ratio: 1;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background: conic-gradient(from 0deg, #00d2ff, transparent 10%, transparent);
+  animation: border-spin 4s linear infinite;
+}
+
+/* Custom animations or base styles */
+.hero-glow {
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 50vh;
+  background: radial-gradient(circle, rgba(0, 210, 255, 0.1) 0%, rgba(2, 6, 23, 0) 70%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ─── Light Mode Theme ─────────────────────── */
+html.light-mode {
+  color-scheme: light;
+}
+
+html.light-mode body {
+  background-color: #f0f4f8;
+  color: #0f172a;
+}
+
+/* Backgrounds */
+html.light-mode .bg-\[\#020617\]   { background-color: #f0f4f8 !important; }
+html.light-mode .bg-\[\#040816\]   { background-color: #e2e8f0 !important; }
+html.light-mode .bg-\[\#0c1222\]   { background-color: #cbd5e1 !important; }
+html.light-mode .bg-\[\#111930\]   { background-color: #b8c4d4 !important; }
+html.light-mode .bg-\[\#010413\]   { background-color: #f8fafc !important; }
+html.light-mode .bg-\[\#0b1126\]   { background-color: #ffffff !important; }
+
+/* Custom Utilities / Glassmorphism */
+html.light-mode .glass {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  border-color: rgba(148, 163, 184, 0.3) !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05) !important;
+}
+
+html.light-mode .glass-pill {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  border-color: rgba(148, 163, 184, 0.3) !important;
+}
+
+html.light-mode .text-outline {
+  filter: none !important;
+}
+
+/* Navbar */
+html.light-mode nav {
+  background: rgba(248, 250, 252, 0.85) !important;
+  border-color: rgba(148,163,184,0.3) !important;
+}
+
+/* Cards / Panels */
+html.light-mode .bg-slate-900      { background-color: #ffffff !important; }
+html.light-mode .bg-slate-950      { background-color: #f8fafc !important; }
+
+html.light-mode .bg-slate-900\/30,
+html.light-mode .bg-slate-900\/40,
+html.light-mode .bg-slate-900\/50,
+html.light-mode .bg-slate-900\/60 {
+  background-color: rgba(255, 255, 255, 0.75) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+html.light-mode .bg-slate-950\/40 {
+  background-color: rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(12px) !important;
+}
+html.light-mode .bg-slate-950\/80 {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(20px) !important;
+}
+html.light-mode .bg-slate-950\/95 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(20px) !important;
+}
+
+/* Hover background states */
+html.light-mode .hover\:bg-slate-800\/60:hover {
+  background-color: rgba(226, 232, 240, 0.6) !important; /* slate-200/60 */
+}
+html.light-mode .hover\:bg-slate-900\/60:hover {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Buttons */
+html.light-mode .bg-slate-800 {
+  background-color: #e2e8f0 !important; /* slate-200 */
+  color: #0f172a !important;
+}
+html.light-mode .bg-slate-800:hover {
+  background-color: #cbd5e1 !important; /* slate-300 */
+}
+
+/* Borders */
+html.light-mode .border-slate-800,
+html.light-mode .border-slate-800\/80,
+html.light-mode .border-slate-850,
+html.light-mode .border-slate-700,
+html.light-mode .border-slate-700\/50,
+html.light-mode .border-slate-700\/60,
+html.light-mode .border-white\/10 {
+  border-color: rgba(148, 163, 184, 0.3) !important;
+}
+
+/* Text */
+html.light-mode .text-white         { color: #0f172a !important; }
+html.light-mode .text-slate-300     { color: #334155 !important; }
+html.light-mode .text-slate-400     { color: #475569 !important; }
+html.light-mode .text-slate-500     { color: #64748b !important; }
+html.light-mode .text-slate-600     { color: #64748b !important; }
+html.light-mode .text-slate-700     { color: #475569 !important; }
+
+/* Dividers */
+html.light-mode .divide-slate-800\/60 > * + * {
+  border-color: rgba(148, 163, 184, 0.3) !important;
+}
+
+/* Gradient stops override to fade to light-mode background (#f0f4f8) */
+html.light-mode .from-\[\#020617\] {
+  --tw-gradient-from: #f0f4f8 var(--tw-gradient-from-position) !important;
+  --tw-gradient-to: rgba(240, 244, 248, 0) var(--tw-gradient-to-position) !important;
+}
+html.light-mode .from-\[\#020617\]\/10 {
+  --tw-gradient-from: rgba(240, 244, 248, 0.1) var(--tw-gradient-from-position) !important;
+  --tw-gradient-to: rgba(240, 244, 248, 0) var(--tw-gradient-to-position) !important;
+}
+html.light-mode .via-\[\#020617\]\/30 {
+  --tw-gradient-to: rgba(240, 244, 248, 0) var(--tw-gradient-to-position) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), rgba(240, 244, 248, 0.3) var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
+}
+html.light-mode .via-\[\#020617\]\/40 {
+  --tw-gradient-to: rgba(240, 244, 248, 0) var(--tw-gradient-to-position) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), rgba(240, 244, 248, 0.4) var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
+}
+html.light-mode .to-\[\#020617\] {
+  --tw-gradient-to: #f0f4f8 var(--tw-gradient-to-position) !important;
+}
+
+/* Footer */
+html.light-mode footer {
+  background-color: #e2e8f0 !important;
+  border-color: rgba(148, 163, 184, 0.3) !important;
+}
+
+/* Subtle box-shadow lift on cards in light mode */
+html.light-mode .rounded-\[2rem\],
+html.light-mode .rounded-\[1\.75rem\],
+html.light-mode .rounded-\[2\.5rem\] {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+}
