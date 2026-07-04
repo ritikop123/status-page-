@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   CheckCircle2, AlertTriangle, XCircle, RefreshCw,
-  Server, Cpu, Gamepad2, Globe, Database, Clock, ChevronDown
+  Server, Cpu, Gamepad2, Globe, Database, Clock, ChevronDown, Wrench
 } from 'lucide-react';
 
 
@@ -100,9 +100,9 @@ const useStatusData = () => {
       // Query real status checks from Supabase REST API
       const nodeIds = ['vps-budget', 'vps-amd', 'web-panel'];
       const nodeMetadata = {
-        'vps-budget': { name: 'VPS – Budget', subtitle: '138.252.100.241 · India', icon: 'server' },
-        'vps-amd': { name: 'VPS – AMD', subtitle: '74.225.254.243 · India', icon: 'cpu' },
-        'web-panel': { name: 'Web Panel', subtitle: '163.61.39.61 · Control API', icon: 'globe' }
+        'vps-budget': { name: 'VPS – Budget', subtitle: 'Intel Xeon E5-2699 v4 · India', icon: 'server' },
+        'vps-amd': { name: 'VPS – AMD', subtitle: 'AMD EPYC 9V74 · India', icon: 'cpu' },
+        'web-panel': { name: 'Web Panel', subtitle: 'host.sagarmatha.site · Control API', icon: 'globe' }
       };
 
       const fetchNodeData = async (nodeId) => {
@@ -139,7 +139,7 @@ const useStatusData = () => {
         }
 
         const latestRecord = records[0];
-        const currentStatus = latestRecord.status === 'up' ? 'operational' : 'outage';
+        const currentStatus = latestRecord.status === 'up' ? 'operational' : latestRecord.status === 'maintenance' ? 'maintenance' : 'outage';
         const currentLatency = latestRecord.status === 'up' ? `${latestRecord.latency_ms}ms` : '0ms';
 
         // Calculate actual uptime percentage over the loaded records (up to 90 checks)
@@ -171,9 +171,10 @@ const useStatusData = () => {
         };
       });
 
-      // Overall status defaults to operational unless a node has an outage
+      // Overall status defaults to operational unless a node has an outage or maintenance
       const hasOutage = mappedNodes.some(n => n.status === 'outage');
-      const overallStatus = hasOutage ? 'outage' : 'operational';
+      const hasMaintenance = mappedNodes.some(n => n.status === 'maintenance');
+      const overallStatus = hasOutage ? 'outage' : (hasMaintenance ? 'maintenance' : 'operational');
 
       setData({
         overall: overallStatus,
@@ -208,9 +209,10 @@ const statusMeta = {
   operational:  { label: 'Operational',  dot: 'bg-green-400',  badge: 'bg-green-500/10 border-green-500/25 text-green-400',  icon: CheckCircle2,   glow: 'shadow-[0_0_20px_rgba(34,197,94,0.2)]'  },
   degraded:     { label: 'Degraded',     dot: 'bg-yellow-400', badge: 'bg-yellow-500/10 border-yellow-500/25 text-yellow-400', icon: AlertTriangle,   glow: 'shadow-[0_0_20px_rgba(234,179,8,0.2)]'  },
   outage:       { label: 'Outage',       dot: 'bg-red-400',    badge: 'bg-red-500/10 border-red-500/25 text-red-400',          icon: XCircle,         glow: 'shadow-[0_0_20px_rgba(239,68,68,0.2)]'  },
+  maintenance:  { label: 'Maintenance',  dot: 'bg-blue-400',   badge: 'bg-blue-500/10 border-blue-500/25 text-blue-400',       icon: Wrench,          glow: 'shadow-[0_0_20px_rgba(59,130,246,0.2)]'  },
 };
 
-const barColor = s => s === 'no_data' ? 'bg-slate-800' : s === 'down' ? 'bg-red-500/80' : 'bg-green-400/70 hover:bg-green-400';
+const barColor = s => s === 'no_data' ? 'bg-slate-800' : s === 'maintenance' ? 'bg-blue-500/80 hover:bg-blue-400' : s === 'down' ? 'bg-red-500/80' : 'bg-green-400/70 hover:bg-green-400';
 
 /* ─── UptimeBar component ───────────────────── */
 const UptimeBar = ({ history }) => {
@@ -222,6 +224,7 @@ const UptimeBar = ({ history }) => {
 
   const chunkStatus = chunk => {
     if (chunk.some(d => d.status === 'down')) return 'down';
+    if (chunk.some(d => d.status === 'maintenance')) return 'maintenance';
     if (chunk.every(d => d.status === 'no_data')) return 'no_data';
     return 'up';
   };
@@ -247,7 +250,7 @@ const UptimeBar = ({ history }) => {
               <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-28 bg-[#020617] border border-slate-800 rounded-xl p-2 text-center pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity z-40 shadow-2xl">
                 <p className="text-[9px] font-black text-slate-500 uppercase mb-0.5">~{15 * (chunks.length - idx)}m ago</p>
                 <p className="text-[10px] font-black text-white capitalize">
-                  {cs === 'down' ? '🔴 Outage' : cs === 'no_data' ? '⚪ No Data' : '🟢 Uptime'}
+                  {cs === 'down' ? '🔴 Outage' : cs === 'maintenance' ? '🔵 Maintenance' : cs === 'no_data' ? '⚪ No Data' : '🟢 Uptime'}
                 </p>
                 {cs === 'up' && <p className="text-[9px] text-cyan-400 font-bold mt-0.5">{avgLatency}ms avg</p>}
               </div>
@@ -258,6 +261,7 @@ const UptimeBar = ({ history }) => {
       <div className="flex gap-4 text-[9px] font-bold text-slate-600 uppercase tracking-widest">
         <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-sm bg-green-400/70" />Operational</span>
         <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-sm bg-red-500/80" />Outage</span>
+        <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-sm bg-blue-500/80" />Maintenance</span>
       </div>
     </div>
   );
@@ -266,7 +270,7 @@ const UptimeBar = ({ history }) => {
 /* ─── LatencyChart component ────────────────── */
 const LatencyChart = ({ history }) => {
   // history is array of 90 items (oldest first)
-  const maxLatency = Math.max(20, ...history.map(d => d.status === 'down' || d.status === 'no_data' ? 0 : d.latency));
+  const maxLatency = Math.max(20, ...history.map(d => d.status === 'down' || d.status === 'no_data' || d.status === 'maintenance' ? 0 : d.latency));
 
   return (
     <div className="space-y-2.5">
@@ -279,8 +283,9 @@ const LatencyChart = ({ history }) => {
         {history.map((d, idx) => {
           const isNoData = d.status === 'no_data';
           const isDown = d.status === 'down';
-          // Minimum height 2px so bar is always visible unless down
-          const heightPct = isNoData || isDown ? 0 : Math.max(2, (d.latency / maxLatency) * 100);
+          const isMaintenance = d.status === 'maintenance';
+          // Minimum height 2px so bar is always visible unless down or maintenance
+          const heightPct = isNoData || isDown || isMaintenance ? 0 : Math.max(2, (d.latency / maxLatency) * 100);
           const minsAgo = 5 * (history.length - idx);
 
           return (
@@ -289,16 +294,17 @@ const LatencyChart = ({ history }) => {
                 className={`w-full rounded-[2px] transition-all duration-200 cursor-default ${
                   isNoData ? 'bg-slate-800 h-full opacity-20' :
                   isDown ? 'bg-red-500/80 h-full opacity-20' :
+                  isMaintenance ? 'bg-blue-500/80 h-full opacity-20' :
                   'bg-cyan-500/70 hover:bg-cyan-400 hover:scale-x-110'
                 }`}
-                style={{ height: isNoData || isDown ? '100%' : `${heightPct}%` }}
+                style={{ height: isNoData || isDown || isMaintenance ? '100%' : `${heightPct}%` }}
               />
               <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-28 bg-[#020617] border border-slate-800 rounded-xl p-2 text-center pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity z-40 shadow-2xl">
                 <p className="text-[9px] font-black text-slate-500 uppercase mb-0.5">~{minsAgo}m ago</p>
                 <p className="text-[10px] font-black text-white capitalize">
-                  {isDown ? '🔴 Outage' : isNoData ? '⚪ No Data' : '🟢 Online'}
+                  {isDown ? '🔴 Outage' : isMaintenance ? '🔵 Maintenance' : isNoData ? '⚪ No Data' : '🟢 Online'}
                 </p>
-                {!isDown && !isNoData && <p className="text-[11px] text-cyan-400 font-bold mt-0.5">{d.latency}ms</p>}
+                {!isDown && !isNoData && !isMaintenance && <p className="text-[11px] text-cyan-400 font-bold mt-0.5">{d.latency}ms</p>}
               </div>
             </div>
           );
