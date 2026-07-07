@@ -29,22 +29,27 @@ const Calculator = () => {
 
   const plansData = {
     'Budget': [
-      { name: 'Budget 3 GB Plan', ram: 3, price: 50, series: 'Budget Series' },
-      { name: 'Budget 6 GB Plan', ram: 6, price: 80, series: 'Budget Series' },
-      { name: 'Budget 8 GB Plan', ram: 8, price: 130, series: 'Budget Series' },
-      { name: 'Budget 12 GB Plan', ram: 12, price: 200, series: 'Budget Series' },
-      { name: 'Budget 16 GB Plan', ram: 16, price: 280, series: 'Budget Series' },
-      { name: 'Budget 24 GB Plan', ram: 24, price: 380, series: 'Budget Series' },
-      { name: 'Budget 32 GB Plan', ram: 32, price: 500, series: 'Budget Series' },
+      { name: 'Dirt Plan', ram: 1, price: 25, series: 'Budget Series' },
+      { name: 'Stone Plan', ram: 2, price: 50, series: 'Budget Series' },
+      { name: 'Copper Plan', ram: 3, price: 75, series: 'Budget Series' },
+      { name: 'Iron Plan', ram: 4, price: 100, series: 'Budget Series' },
+      { name: 'Redstone Plan', ram: 6, price: 150, series: 'Budget Series' },
+      { name: 'Lapis Plan', ram: 8, price: 200, series: 'Budget Series' },
+      { name: 'Gold Plan', ram: 10, price: 250, series: 'Budget Series' },
+      { name: 'Platinum Plan', ram: 12, price: 300, series: 'Budget Series' },
+      { name: 'Diamond Plan', ram: 16, price: 400, series: 'Budget Series' },
+      { name: 'Netherite Plan', ram: 24, price: 550, series: 'Budget Series' },
+      { name: 'Ultimate Plan', ram: 32, price: 700, series: 'Budget Series' },
     ],
     'Performance': [
-      { name: 'Perf 3 GB Plan', ram: 3, price: 80, series: 'Performance Series' },
-      { name: 'Perf 6 GB Plan', ram: 6, price: 130, series: 'Performance Series' },
-      { name: 'Perf 8 GB Plan', ram: 8, price: 210, series: 'Performance Series' },
-      { name: 'Perf 12 GB Plan', ram: 12, price: 320, series: 'Performance Series' },
-      { name: 'Perf 16 GB Plan', ram: 16, price: 450, series: 'Performance Series' },
-      { name: 'Perf 24 GB Plan', ram: 24, price: 610, series: 'Performance Series' },
-      { name: 'Perf 32 GB Plan', ram: 32, price: 800, series: 'Performance Series' },
+      { name: 'Blue Sea Plan', ram: 2, price: 80, series: 'Premium Series' },
+      { name: 'East Blue Plan', ram: 4, price: 160, series: 'Premium Series' },
+      { name: 'Grand Line Plan', ram: 6, price: 240, series: 'Premium Series' },
+      { name: 'Supernova Plan', ram: 8, price: 320, series: 'Premium Series' },
+      { name: 'Warlord Plan', ram: 12, price: 480, series: 'Premium Series' },
+      { name: 'Yonko Plan', ram: 16, price: 640, series: 'Premium Series' },
+      { name: 'Roger Plan', ram: 24, price: 960, series: 'Premium Series' },
+      { name: 'Nika Plan', ram: 32, price: 1280, series: 'Premium Series' },
     ]
   };
 
@@ -286,7 +291,7 @@ const Calculator = () => {
               <div className="flex gap-2">
                 {[
                   { id: 'Budget', label: 'Budget Series (Xeon)', icon: <Shield className="w-4 h-4" /> },
-                  { id: 'Performance', label: 'Performance Series (Platinum)', icon: <Zap className="w-4 h-4" /> }
+                  { id: 'Performance', label: 'Premium Series (EPYC)', icon: <Zap className="w-4 h-4" /> }
                 ].map((p) => (
                   <button
                     key={p.id}
