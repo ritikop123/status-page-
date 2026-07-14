@@ -286,33 +286,33 @@ const MinecraftHosting = () => {
                           <span className="text-xs font-bold text-cyan-400">Recommended for {plan.players}</span>
                         </div>
                       )}
-                      <div className="flex items-center gap-3 text-slate-300">
+                      <div className="flex items-center gap-3 text-slate-100 font-medium">
                         <Cpu className="w-3.5 h-3.5 text-slate-500" />
                         <span className="text-xs">{plan.vcpu}</span>
                       </div>
                       {plan.cpu && (
-                        <div className="flex items-center gap-3 text-slate-300">
+                        <div className="flex items-center gap-3 text-slate-100 font-medium">
                           <Zap className="w-3.5 h-3.5 text-slate-500" />
                           <span className="text-xs">CPU: {plan.cpu}</span>
                         </div>
                       )}
-                      <div className="flex items-center gap-3 text-slate-300">
+                      <div className="flex items-center gap-3 text-slate-100 font-medium">
                         <Database className="w-3.5 h-3.5 text-slate-500" />
                         <span className="text-xs">{plan.ram}</span>
                       </div>
-                      <div className="flex items-center gap-3 text-slate-300">
+                      <div className="flex items-center gap-3 text-slate-100 font-medium">
                         <HardDrive className="w-3.5 h-3.5 text-slate-500" />
                         <span className="text-xs">{plan.ssd}</span>
                       </div>
-                      <div className="flex items-center gap-3 text-slate-300">
+                      <div className="flex items-center gap-3 text-slate-100 font-medium">
                         <Layout className="w-3.5 h-3.5 text-slate-500" />
                         <span className="text-xs">{plan.allocations}</span>
                       </div>
-                      <div className="flex items-center gap-3 text-slate-300">
+                      <div className="flex items-center gap-3 text-slate-100 font-medium">
                         <Save className="w-3.5 h-3.5 text-slate-500" />
                         <span className="text-xs">{plan.db}</span>
                       </div>
-                      <div className="flex items-center gap-3 text-slate-300">
+                      <div className="flex items-center gap-3 text-slate-100 font-medium">
                         <Shield className="w-3.5 h-3.5 text-slate-500" />
                         <span className="text-xs">{plan.backups}</span>
                       </div>
@@ -335,16 +335,16 @@ const MinecraftHosting = () => {
                     </div>
 
                     <div className="space-y-2 mb-6 pb-6 border-b border-slate-800">
-                      <div className="flex items-center gap-3 text-slate-400 text-xs">
+                      <div className="flex items-center gap-3 text-white font-medium text-xs">
                         <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400" />
                         99.9% Uptime Guarantee
                       </div>
-                      <div className="flex items-center gap-3 text-slate-400 text-xs">
+                      <div className="flex items-center gap-3 text-white font-medium text-xs">
                         <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400" />
                         Instant Setup
                       </div>
                       {activeSeries === 'Proxy Series' && (
-                        <div className="flex items-center gap-3 text-slate-400 text-xs">
+                        <div className="flex items-center gap-3 text-white font-medium text-xs">
                           <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400" />
                           DDoS Protected
                         </div>
