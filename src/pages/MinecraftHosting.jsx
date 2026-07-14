@@ -249,7 +249,7 @@ const MinecraftHosting = () => {
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.3, delay: i * 0.1 }}
                     style={{ backgroundImage: 'url(/cards-removebg-preview.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}
-                    className={`bg-[#0b1126] border rounded-[2rem] p-6 flex flex-col group transition-all relative overflow-hidden ${
+                    className={`bg-[#0b1126] border rounded-[2rem] p-6 flex flex-col group transition-all relative ${
                       plan.outOfStock
                         ? 'border-red-900/60 opacity-70'
                         : plan.bestseller 
