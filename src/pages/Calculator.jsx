@@ -42,14 +42,14 @@ const Calculator = () => {
       { name: 'Ultimate Plan', ram: 32, price: 700, series: 'Budget Series' },
     ],
     'Performance': [
-      { name: 'Blue Sea Plan', ram: 2, price: 80, series: 'Premium Series' },
-      { name: 'East Blue Plan', ram: 4, price: 160, series: 'Premium Series' },
-      { name: 'Grand Line Plan', ram: 6, price: 240, series: 'Premium Series' },
-      { name: 'Supernova Plan', ram: 8, price: 320, series: 'Premium Series' },
-      { name: 'Warlord Plan', ram: 12, price: 480, series: 'Premium Series' },
-      { name: 'Yonko Plan', ram: 16, price: 640, series: 'Premium Series' },
-      { name: 'Roger Plan', ram: 24, price: 960, series: 'Premium Series' },
-      { name: 'Nika Plan', ram: 32, price: 1280, series: 'Premium Series' },
+      { name: 'Aqua Plan', ram: 2, price: 60, series: 'Platinum Series' },
+      { name: 'Tidal Plan', ram: 4, price: 120, series: 'Platinum Series' },
+      { name: 'Lunar Plan', ram: 6, price: 240, series: 'Platinum Series' },
+      { name: 'Storm Plan', ram: 8, price: 270, series: 'Platinum Series' },
+      { name: 'Inferno Plan', ram: 12, price: 360, series: 'Platinum Series' },
+      { name: 'Thunder Plan', ram: 16, price: 480, series: 'Platinum Series' },
+      { name: 'Galaxy Plan', ram: 24, price: 720, series: 'Platinum Series' },
+      { name: 'Immortal Plan', ram: 32, price: 960, series: 'Platinum Series' },
     ]
   };
 
@@ -291,7 +291,7 @@ const Calculator = () => {
               <div className="flex gap-2">
                 {[
                   { id: 'Budget', label: 'Budget Series (Xeon)', icon: <Shield className="w-4 h-4" /> },
-                  { id: 'Performance', label: 'Premium Series (EPYC)', icon: <Zap className="w-4 h-4" /> }
+                  { id: 'Performance', label: 'Platinum Series (Xeon Platinum)', icon: <Zap className="w-4 h-4" /> }
                 ].map((p) => (
                   <button
                     key={p.id}
