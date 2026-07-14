@@ -8,7 +8,7 @@ const MinecraftHosting = () => {
   const [currency, setCurrency] = useState({ code: 'INR', symbol: '₹', rate: 1, flag: '🇮🇳' });
   const [location, setLocation] = useState('India');
 
-  const seriesOptions = ['Budget Series', 'Platinum Series', 'Performance Series', 'Proxy Series', 'Premium Series'];
+  const seriesOptions = ['Budget Series', 'Platinum Series', 'Proxy Series', 'Premium Series'];
   const locations = [
     { name: 'India', latency: '40-60ms', outOfStock: false },
     { name: 'Singapore', latency: '68ms', outOfStock: true }
@@ -54,7 +54,7 @@ const MinecraftHosting = () => {
       { name: 'Galaxy Plan', price: '720', vcpu: 'Intel Xeon Platinum 8269CY @2.5GHz (20 vCore)', ram: '24 GB DDR4 RAM', ssd: '80 GB NVMe Disk', allocations: 'Unlimited', db: 'Unlimited', backups: '5 Backups', players: '50-75 Players', cpu: '2000%' },
       { name: 'Immortal Plan', price: '960', vcpu: 'Intel Xeon Platinum 8269CY @2.5GHz (24 vCore)', ram: '32 GB DDR4 RAM', ssd: '100 GB NVMe Disk', allocations: 'Unlimited', db: 'Unlimited', backups: '5 Backups', players: '70-100 Players', cpu: '2400%' },
     ],
-    'Performance Series': [],
+
     'Proxy Series': [
       { name: 'Starter Proxy', price: '200', vcpu: '2 vCore', ram: '1 GB DDR4 RAM', ssd: '5 GB NVMe Disk', allocations: '3 Allocations', db: '1 Database', backups: '1 Backup', players: 'Proxy' },
       { name: 'Basic Proxy', price: '400', vcpu: '3 vCore', ram: '2 GB DDR4 RAM', ssd: '10 GB NVMe Disk', allocations: '3 Allocations', db: '1 Database', backups: '2 Backups', bestseller: true, players: 'Proxy' },
