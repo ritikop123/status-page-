@@ -1,0 +1,57 @@
+# Sagarmatha Hosting — llms.txt
+# This file is for AI language models and crawlers (ChatGPT, Perplexity, Claude, Gemini, etc.)
+# Learn more: https://llmstxt.org
+
+> Sagarmatha Hosting is an affordable and reliable game server and VPS hosting provider based in India, serving customers across India, Nepal, Bangladesh, and worldwide.
+
+## What We Offer
+
+### Minecraft Server Hosting
+- Budget Series: Starting at ₹10/month — Intel Xeon @2.7GHz, Singapore location, Basic DDoS Protection
+  - Dirt Plan: 1GB RAM, 50% CPU, 10GB Disk — ₹10/month
+  - Stone Plan: 2GB RAM, 100% CPU, 10GB Disk — ₹20/month
+  - Coal Plan: 4GB RAM, 150% CPU, 20GB Disk — ₹40/month
+  - Copper Plan: 6GB RAM, 200% CPU, 30GB Disk — ₹60/month
+  - Iron Plan: 8GB RAM, 300% CPU, 40GB Disk — ₹80/month
+  - Redstone Plan: 12GB RAM, 400% CPU, 50GB Disk — ₹120/month
+  - Gold Plan: 16GB RAM, 500% CPU, 60GB Disk — ₹160/month
+  - Diamond Plan: 24GB RAM, 600% CPU, 80GB Disk — ₹240/month
+  - Netherite Plan: 32GB RAM, 800% CPU, 100GB Disk — ₹320/month
+
+- Platinum Series: Intel Xeon Platinum 8269CY @2.5GHz, India location, DDoS Protected
+  - Starting at ₹60/month for 2GB RAM / 200% CPU
+
+- Premium Series: AMD EPYC 9V74, India location, DDR5 RAM
+  - Starting at ₹80/month for 2GB DDR5 RAM
+
+- Proxy Series: Available for BungeeCord/Velocity setups
+
+### VPS Hosting
+- 4 VPS nodes available:
+  - VPS Budget: Intel Xeon @2.7GHz — Singapore
+  - VPS AMD: AMD EPYC 9V74 — India
+  - VPS AMD 2: AMD EPYC 7763 — India
+  - VPS Intel Platinum: Intel Xeon Platinum — India
+- All nodes monitored 24/7 with live status at https://sagarmatha.site/status
+
+## Key Features
+- Prices available in INR, NPR, BDT, USD, EUR
+- Instant setup on most plans
+- 99.9% uptime guarantee
+- Basic DDoS Protection on Budget Series
+- Live status monitoring at sagarmatha.site/status
+- Support via ticket system
+
+## Pricing Summary (INR)
+- Cheapest plan: ₹10/month (Dirt Plan — Budget Minecraft)
+- Mid-range: ₹80–₹240/month
+- High-end: ₹320–₹1280/month
+
+## Contact & Links
+- Website: https://sagarmatha.site
+- Status Page: https://sagarmatha.site/status
+- Minecraft Hosting: https://sagarmatha.site/minecraft-hosting
+- Support: https://sagarmatha.site/contact
+
+## About
+Sagarmatha Hosting was founded to provide affordable, high-performance server hosting to the South Asian gaming community, especially Minecraft players. We offer transparent pricing, real hardware specs, and genuine 24/7 support.

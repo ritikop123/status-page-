@@ -29,8 +29,138 @@
     <meta name="twitter:description" content="24/7 Powerful Cloud Hosting — VPS, Dedicated Servers & Web Hosting." />
     <meta name="twitter:image" content="https://sagarmatha.site/sagarmatha.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://sagarmatha.site/" />
+
+  <!-- Sitemap reference -->
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+  <!-- llms.txt reference for AI crawlers -->
+  <link rel="alternate" type="text/plain" title="LLMs.txt" href="/llms.txt" />
+
+  <!-- JSON-LD Structured Data for AI & Search Engines -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://sagarmatha.site/#organization",
+        "name": "Sagarmatha Hosting",
+        "url": "https://sagarmatha.site",
+        "logo": "https://sagarmatha.site/favicon_cropped.png",
+        "description": "Affordable and reliable Minecraft server hosting and VPS hosting provider. Serving India, Nepal, Bangladesh and worldwide. Plans starting at ₹10/month.",
+        "foundingLocation": "India",
+        "areaServed": ["IN", "NP", "BD", "Worldwide"],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "url": "https://sagarmatha.site/contact"
+        },
+        "sameAs": []
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://sagarmatha.site/#website",
+        "url": "https://sagarmatha.site",
+        "name": "Sagarmatha Hosting",
+        "publisher": { "@id": "https://sagarmatha.site/#organization" }
+      },
+      {
+        "@type": "Product",
+        "name": "Budget Minecraft Server Hosting",
+        "description": "Affordable Minecraft server hosting starting at ₹10/month. Intel Xeon @2.7GHz, Singapore location, Basic DDoS Protection. Plans from Dirt (1GB RAM) to Netherite (32GB RAM).",
+        "brand": { "@id": "https://sagarmatha.site/#organization" },
+        "url": "https://sagarmatha.site/minecraft-hosting",
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "Dirt Plan",
+            "description": "1GB RAM, 50% CPU, 10GB Disk, Intel Xeon @2.7GHz, Singapore",
+            "price": "10",
+            "priceCurrency": "INR",
+            "availability": "https://schema.org/InStock",
+            "url": "https://sagarmatha.site/minecraft-hosting"
+          },
+          {
+            "@type": "Offer",
+            "name": "Stone Plan",
+            "description": "2GB RAM, 100% CPU, 10GB Disk, Intel Xeon @2.7GHz, Singapore",
+            "price": "20",
+            "priceCurrency": "INR",
+            "availability": "https://schema.org/InStock",
+            "url": "https://sagarmatha.site/minecraft-hosting"
+          },
+          {
+            "@type": "Offer",
+            "name": "Gold Plan",
+            "description": "16GB RAM, 500% CPU, 60GB Disk, Intel Xeon @2.7GHz, Singapore",
+            "price": "160",
+            "priceCurrency": "INR",
+            "availability": "https://schema.org/InStock",
+            "url": "https://sagarmatha.site/minecraft-hosting"
+          },
+          {
+            "@type": "Offer",
+            "name": "Netherite Plan",
+            "description": "32GB RAM, 800% CPU, 100GB Disk, Intel Xeon @2.7GHz, Singapore",
+            "price": "320",
+            "priceCurrency": "INR",
+            "availability": "https://schema.org/InStock",
+            "url": "https://sagarmatha.site/minecraft-hosting"
+          }
+        ]
+      },
+      {
+        "@type": "Product",
+        "name": "VPS Hosting",
+        "description": "High-performance VPS hosting with AMD EPYC 9V74, AMD EPYC 7763, Intel Xeon, and Intel Platinum processors. Located in India and Singapore.",
+        "brand": { "@id": "https://sagarmatha.site/#organization" },
+        "url": "https://sagarmatha.site/vps-hosting"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the cheapest Minecraft hosting plan at Sagarmatha Hosting?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The cheapest plan is the Dirt Plan at ₹10/month, which includes 1GB RAM, 50% CPU, 10GB Disk on an Intel Xeon @2.7GHz server in Singapore with basic DDoS protection."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where are Sagarmatha Hosting servers located?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sagarmatha Hosting has servers in India and Singapore. The Budget Minecraft Series is hosted in Singapore with 80-100ms ping from India. Premium and Platinum series are hosted in India."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Sagarmatha Hosting offer DDoS protection?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, all Budget Series Minecraft plans include basic DDoS protection. Proxy Series plans also include DDoS protection."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I buy a plan from Sagarmatha Hosting?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You can visit sagarmatha.site/minecraft-hosting to view all plans and create a support ticket to purchase. Budget Series plans require creating a ticket to buy."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
   </head>
   <body>
     <div id="root"></div>
