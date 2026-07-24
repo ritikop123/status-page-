@@ -156,11 +156,6 @@ const MinecraftHosting = () => {
               >
                 <div className="flex items-center gap-2">
                   <span>{series}</span>
-                  {series === 'Budget Series' && (
-                    <span className="text-[9px] text-red-400 font-black uppercase tracking-widest bg-red-500/10 px-2 py-0.5 rounded-full border border-red-500/20">
-                      Out of Stock
-                    </span>
-                  )}
                 </div>
               </button>
             ))}
