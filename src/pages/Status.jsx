@@ -63,7 +63,7 @@ const useStatusData = () => {
             {
               id: 'vps-budget',
               name: 'VPS – Budget',
-              subtitle: 'Intel Xeon E5-2699 v4 · India',
+              subtitle: 'Intel Xeon · India',
               icon: 'server',
               status: 'operational',
               latency: '22ms',
@@ -73,11 +73,31 @@ const useStatusData = () => {
             {
               id: 'vps-amd',
               name: 'VPS – AMD',
-              subtitle: 'AMD EPYC 9V74 · India',
+              subtitle: 'AMD EPYC 7V74 · India',
               icon: 'cpu',
               status: 'operational',
               latency: '19ms',
               uptime: '99.99%',
+              history: generateHistory([])
+            },
+            {
+              id: 'vps-amd-2',
+              name: 'VPS – AMD 2',
+              subtitle: 'AMD EPYC 7763 · India',
+              icon: 'cpu',
+              status: 'operational',
+              latency: '18ms',
+              uptime: '100.00%',
+              history: generateHistory([])
+            },
+            {
+              id: 'vps-intel-platinum',
+              name: 'VPS – Intel Platinum',
+              subtitle: 'Intel Platinum · India',
+              icon: 'server',
+              status: 'operational',
+              latency: '20ms',
+              uptime: '100.00%',
               history: generateHistory([])
             },
             {
@@ -98,10 +118,12 @@ const useStatusData = () => {
       }
 
       // Query real status checks from Supabase REST API
-      const nodeIds = ['vps-budget', 'vps-amd', 'web-panel'];
+      const nodeIds = ['vps-budget', 'vps-amd', 'vps-amd-2', 'vps-intel-platinum', 'web-panel'];
       const nodeMetadata = {
-        'vps-budget': { name: 'VPS – Budget', subtitle: 'Intel Xeon E5-2699 v4 · India', icon: 'server' },
-        'vps-amd': { name: 'VPS – AMD', subtitle: 'AMD EPYC 9V74 · India', icon: 'cpu' },
+        'vps-budget': { name: 'VPS – Budget', subtitle: 'Intel Xeon · India', icon: 'server' },
+        'vps-amd': { name: 'VPS – AMD', subtitle: 'AMD EPYC 7V74 · India', icon: 'cpu' },
+        'vps-amd-2': { name: 'VPS – AMD 2', subtitle: 'AMD EPYC 7763 · India', icon: 'cpu' },
+        'vps-intel-platinum': { name: 'VPS – Intel Platinum', subtitle: 'Intel Platinum · India', icon: 'server' },
         'web-panel': { name: 'Web Panel', subtitle: 'host.sagarmatha.site · Control API', icon: 'globe' }
       };
 
@@ -415,7 +437,7 @@ const Status = () => {
   const OverallIcon = overallMeta?.icon;
 
   const SECTIONS = [
-    { key: 'vps',   label: 'VPS Nodes',           ids: ['vps-budget', 'vps-amd'] },
+    { key: 'vps',   label: 'VPS Nodes',           ids: ['vps-budget', 'vps-amd', 'vps-amd-2', 'vps-intel-platinum'] },
     { key: 'infra', label: 'Infrastructure & API', ids: ['web-panel'] }
   ];
 
@@ -479,7 +501,7 @@ const Status = () => {
               <div className="flex-1">
                 <h2 className="text-2xl font-black text-white">All Systems Fully Operational</h2>
                 <p className="text-slate-500 text-sm mt-1 font-semibold">
-                  3 VPS nodes · 1 Game node · 1 Web panel · All healthy
+                  4 VPS nodes · 1 Game node · 1 Web panel · All healthy
                 </p>
               </div>
 

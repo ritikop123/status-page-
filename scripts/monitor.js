@@ -7,19 +7,31 @@ const NODES = [
   {
     id: 'vps-amd',
     name: 'VPS – AMD',
-    host: '74.225.254.243',
+    host: '98.70.24.182',
+    port: 22,
+  },
+  {
+    id: 'vps-amd-2',
+    name: 'VPS – AMD 2',
+    host: '151.242.187.201',
     port: 22,
   },
   {
     id: 'vps-budget',
     name: 'VPS – Budget',
-    host: '138.252.100.241',
+    host: '79.108.225.107',
+    port: 22,
+  },
+  {
+    id: 'vps-intel-platinum',
+    name: 'VPS – Intel Platinum',
+    host: '151.242.187.129',
     port: 22,
   },
   {
     id: 'web-panel',
     name: 'Web Panel',
-    host: '163.61.39.61',
+    host: '151.242.187.127',
     port: 22,
   }
 ];
