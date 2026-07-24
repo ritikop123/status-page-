@@ -63,7 +63,7 @@ const useStatusData = () => {
             {
               id: 'vps-budget',
               name: 'VPS – Budget',
-              subtitle: 'Intel Xeon · India',
+              subtitle: 'Intel Xeon · Singapore',
               icon: 'server',
               status: 'operational',
               latency: '22ms',
@@ -120,7 +120,7 @@ const useStatusData = () => {
       // Query real status checks from Supabase REST API
       const nodeIds = ['vps-budget', 'vps-amd', 'vps-amd-2', 'vps-intel-platinum', 'web-panel'];
       const nodeMetadata = {
-        'vps-budget': { name: 'VPS – Budget', subtitle: 'Intel Xeon · India', icon: 'server' },
+        'vps-budget': { name: 'VPS – Budget', subtitle: 'Intel Xeon · Singapore', icon: 'server' },
         'vps-amd': { name: 'VPS – AMD', subtitle: 'AMD EPYC 9V74 · India', icon: 'cpu' },
         'vps-amd-2': { name: 'VPS – AMD 2', subtitle: 'AMD EPYC 7763 · India', icon: 'cpu' },
         'vps-intel-platinum': { name: 'VPS – Intel Platinum', subtitle: 'Intel Platinum · India', icon: 'server' },
