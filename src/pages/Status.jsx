@@ -73,7 +73,7 @@ const useStatusData = () => {
             {
               id: 'vps-amd',
               name: 'VPS – AMD',
-              subtitle: 'AMD EPYC 7V74 · India',
+              subtitle: 'AMD EPYC 9V74 · India',
               icon: 'cpu',
               status: 'operational',
               latency: '19ms',
@@ -121,7 +121,7 @@ const useStatusData = () => {
       const nodeIds = ['vps-budget', 'vps-amd', 'vps-amd-2', 'vps-intel-platinum', 'web-panel'];
       const nodeMetadata = {
         'vps-budget': { name: 'VPS – Budget', subtitle: 'Intel Xeon · India', icon: 'server' },
-        'vps-amd': { name: 'VPS – AMD', subtitle: 'AMD EPYC 7V74 · India', icon: 'cpu' },
+        'vps-amd': { name: 'VPS – AMD', subtitle: 'AMD EPYC 9V74 · India', icon: 'cpu' },
         'vps-amd-2': { name: 'VPS – AMD 2', subtitle: 'AMD EPYC 7763 · India', icon: 'cpu' },
         'vps-intel-platinum': { name: 'VPS – Intel Platinum', subtitle: 'Intel Platinum · India', icon: 'server' },
         'web-panel': { name: 'Web Panel', subtitle: 'host.sagarmatha.site · Control API', icon: 'globe' }
