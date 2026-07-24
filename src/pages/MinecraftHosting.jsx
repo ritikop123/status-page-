@@ -11,7 +11,7 @@ const MinecraftHosting = () => {
   const seriesOptions = ['Budget Series', 'Platinum Series', 'Proxy Series', 'Premium Series'];
   const locations = [
     { name: 'India', latency: '40-60ms', outOfStock: false },
-    { name: 'Singapore', latency: '68ms', outOfStock: true }
+    { name: 'Singapore', latency: '80-100ms', outOfStock: false }
   ];
 
   const currencies = [
@@ -32,17 +32,15 @@ const MinecraftHosting = () => {
 
   const plansData = {
     'Budget Series': [
-      { name: 'Dirt Plan', price: '25', vcpu: 'Intel Xeon E5-2699 v4 (1 vCore)', ram: '1 GB DDR4 RAM', ssd: '5 GB NVMe Disk', allocations: '1 Allocation', db: '1 Database', backups: '1 Backup', players: '1-3 Players', outOfStock: true },
-      { name: 'Stone Plan', price: '50', vcpu: 'Intel Xeon E5-2699 v4 (1.5 vCore)', ram: '2 GB DDR4 RAM', ssd: '10 GB NVMe Disk', allocations: '1 Allocation', db: '1 Database', backups: '1 Backup', players: '2-5 Players', outOfStock: true },
-      { name: 'Copper Plan', price: '75', vcpu: 'Intel Xeon E5-2699 v4 (2 vCore)', ram: '3 GB DDR4 RAM', ssd: '15 GB NVMe Disk', allocations: '2 Allocations', db: '1 Database', backups: '2 Backups', players: '3-8 Players', outOfStock: true },
-      { name: 'Iron Plan', price: '100', vcpu: 'Intel Xeon E5-2699 v4 (2.5 vCore)', ram: '4 GB DDR4 RAM', ssd: '20 GB NVMe Disk', allocations: '2 Allocations', db: '2 Databases', backups: '2 Backups', players: '5-12 Players', outOfStock: true },
-      { name: 'Redstone Plan', price: '150', vcpu: 'Intel Xeon E5-2699 v4 (4 vCore)', ram: '6 GB DDR4 RAM', ssd: '25 GB NVMe Disk', allocations: '3 Allocations', db: '2 Databases', backups: '3 Backups', players: '10-20 Players', outOfStock: true },
-      { name: 'Lapis Plan', price: '200', vcpu: 'Intel Xeon E5-2699 v4 (6 vCore)', ram: '8 GB DDR4 RAM', ssd: '30 GB NVMe Disk', allocations: '4 Allocations', db: '3 Databases', backups: '3 Backups', players: '15-25 Players', outOfStock: true },
-      { name: 'Gold Plan', price: '250', vcpu: 'Intel Xeon E5-2699 v4 (6 vCore)', ram: '10 GB DDR4 RAM', ssd: '35 GB NVMe Disk', allocations: '4 Allocations', db: '3 Databases', backups: '4 Backups', players: '20-30 Players', outOfStock: true },
-      { name: 'Platinum Plan', price: '300', vcpu: 'Intel Xeon E5-2699 v4 (8 vCore)', ram: '12 GB DDR4 RAM', ssd: '40 GB NVMe Disk', allocations: '5 Allocations', db: '4 Databases', backups: '5 Backups', bestseller: true, players: '25-35 Players', outOfStock: true },
-      { name: 'Diamond Plan', price: '400', vcpu: 'Intel Xeon E5-2699 v4 (10 vCore)', ram: '16 GB DDR4 RAM', ssd: '50 GB NVMe Disk', allocations: 'Unlimited', db: 'Unlimited', backups: '5 Backups', players: '30-45 Players', outOfStock: true },
-      { name: 'Netherite Plan', price: '550', vcpu: 'Intel Xeon E5-2699 v4 (10 vCore)', ram: '24 GB DDR4 RAM', ssd: '60 GB NVMe Disk', allocations: 'Unlimited', db: 'Unlimited', backups: '5 Backups', players: '40-60 Players', outOfStock: true },
-      { name: 'Ultimate Plan', price: '700', vcpu: 'Intel Xeon E5-2699 v4 (12 vCore)', ram: '32 GB DDR4 RAM', ssd: '70 GB NVMe Disk', allocations: 'Unlimited', db: 'Unlimited', backups: '5 Backups', players: '55-80 Players', outOfStock: true },
+      { name: 'Dirt Plan', price: '10', vcpu: 'Intel Xeon @2.7GHz', cpu: '50%', ram: '1 GB RAM', ssd: '10 GB Disk', allocations: '1 Allocation', db: '1 Database', backups: '1 Backup', players: '1-3 Players' },
+      { name: 'Stone Plan', price: '20', vcpu: 'Intel Xeon @2.7GHz', cpu: '100%', ram: '2 GB RAM', ssd: '10 GB Disk', allocations: '1 Allocation', db: '1 Database', backups: '1 Backup', players: '2-5 Players' },
+      { name: 'Coal Plan', price: '40', vcpu: 'Intel Xeon @2.7GHz', cpu: '150%', ram: '4 GB RAM', ssd: '20 GB Disk', allocations: '2 Allocations', db: '1 Database', backups: '2 Backups', players: '3-8 Players' },
+      { name: 'Copper Plan', price: '60', vcpu: 'Intel Xeon @2.7GHz', cpu: '200%', ram: '6 GB RAM', ssd: '30 GB Disk', allocations: '2 Allocations', db: '2 Databases', backups: '2 Backups', players: '5-12 Players' },
+      { name: 'Iron Plan', price: '80', vcpu: 'Intel Xeon @2.7GHz', cpu: '300%', ram: '8 GB RAM', ssd: '40 GB Disk', allocations: '3 Allocations', db: '2 Databases', backups: '3 Backups', players: '10-20 Players' },
+      { name: 'Redstone Plan', price: '120', vcpu: 'Intel Xeon @2.7GHz', cpu: '400%', ram: '12 GB RAM', ssd: '50 GB Disk', allocations: '4 Allocations', db: '3 Databases', backups: '3 Backups', players: '15-25 Players' },
+      { name: 'Gold Plan', price: '160', vcpu: 'Intel Xeon @2.7GHz', cpu: '500%', ram: '16 GB RAM', ssd: '60 GB Disk', allocations: '4 Allocations', db: '3 Databases', backups: '4 Backups', bestseller: true, players: '20-30 Players' },
+      { name: 'Diamond Plan', price: '240', vcpu: 'Intel Xeon @2.7GHz', cpu: '600%', ram: '24 GB RAM', ssd: '80 GB Disk', allocations: 'Unlimited', db: 'Unlimited', backups: '5 Backups', players: '30-45 Players' },
+      { name: 'Netherite Plan', price: '320', vcpu: 'Intel Xeon @2.7GHz', cpu: '800%', ram: '32 GB RAM', ssd: '100 GB Disk', allocations: 'Unlimited', db: 'Unlimited', backups: '5 Backups', players: '40-60 Players' },
     ],
     'Platinum Series': [
       { name: 'Aqua Plan', price: '60', vcpu: 'Intel Xeon Platinum 8269CY @2.5GHz (2 vCore)', ram: '2 GB DDR4 RAM', ssd: '10 GB NVMe Disk', allocations: '1 Allocation', db: '1 Database', backups: '1 Backup', players: '1-5 Players', cpu: '200%' },
@@ -106,7 +104,7 @@ const MinecraftHosting = () => {
           <div className="flex flex-col items-center gap-6">
             <div className="bg-slate-900/60 backdrop-blur-md border border-slate-700/50 px-6 py-2 rounded-full inline-flex items-center gap-2">
               <span className="text-slate-400 text-lg">Starting at</span>
-              <span className="text-2xl font-bold text-white text-gradient">{currency.symbol}{formatPrice(50)}/month</span>
+              <span className="text-2xl font-bold text-white text-gradient">{currency.symbol}{formatPrice(10)}/month</span>
             </div>
             
             <button 
@@ -326,6 +324,11 @@ const MinecraftHosting = () => {
                           <div className="text-xs text-slate-300 font-medium text-white mb-1">+ {currency.symbol}{formatPrice(70)} for Extra 100% CPU (on going plan)</div>
                           <div className="text-xs text-slate-300 font-medium text-white">+ {currency.symbol}{formatPrice(30)} for Extra 1GB RAM (on going plan)</div>
                         </>
+                      ) : activeSeries === 'Budget Series' ? (
+                        <>
+                          <div className="text-xs text-slate-300 font-medium text-white mb-1">+ {currency.symbol}{formatPrice(60)} for Extra 100% CPU (on going plan)</div>
+                          <div className="text-xs text-slate-300 font-medium text-white">+ {currency.symbol}{formatPrice(10)} for Extra 1GB RAM (on going plan)</div>
+                        </>
                       ) : (
                         <>
                           <div className="text-xs text-slate-300 font-medium text-white mb-1">+ {currency.symbol}{formatPrice(activeSeries === 'Premium Series' ? 90 : 50)} for Extra 100% CPU (1 vCore)</div>
@@ -360,7 +363,7 @@ const MinecraftHosting = () => {
                         to="/contact"
                         className="w-full py-3 bg-slate-900 border border-slate-700 rounded-xl font-bold text-white hover:bg-cyan-500 hover:border-cyan-400 hover:text-[#020617] transition-all text-sm text-center"
                       >
-                        Buy Now
+                        {activeSeries === 'Budget Series' ? 'Create Ticket to Buy' : 'Buy Now'}
                       </Link>
                     )}
                   </motion.div>
